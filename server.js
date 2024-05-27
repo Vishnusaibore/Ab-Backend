@@ -29,6 +29,10 @@ async function main(){
         password:String
     })
     const User= mongoose.model("User",userSchema)
+    //express App home route
+    app.get("/",(req,res)=>{
+        res.send("h2>Hello Welcome To Anime Blogger")
+    })
 
     // Configure Nodemailer transporter
     const App_password = process.env.APP_PASSWORD
