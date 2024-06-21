@@ -31,7 +31,7 @@ async function main(){
     const User= mongoose.model("User",userSchema)
     //express App home route
     app.get("/",(req,res)=>{
-        res.send("h2>Hello Welcome To Anime Blogger")
+        res.send("h2>Hello Welcome To Anime Blogger</h2>")
     })
 
     // Configure Nodemailer transporter
@@ -192,7 +192,8 @@ async function main(){
     const postSchema= new mongoose.Schema({
         name:String,
         blogImage:String,
-        content:String
+        content:String,
+        owner:String
     })
     const Post = mongoose.model("Post",postSchema)
 
@@ -230,7 +231,8 @@ async function main(){
 
         //
         const post=new Post({
-            name,blogImage,content
+            name,blogImage,content,
+            owner:LoggedUser
         })
         try{
             await post.save()
