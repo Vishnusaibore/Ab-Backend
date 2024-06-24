@@ -83,7 +83,7 @@ async function main(){
                           <img src="https://img.freepik.com/free-photo/mythical-dragon-beast-anime-style_23-2151112842.jpg?t=st=1716664493~exp=1716668093~hmac=b34d930aea7f09a69bcb7e9915ea6038c25e075869ee3735cd762e878f1aa7f5&w=500" height="110"alt="App Logo" />
                         <footer>
                         <p>If you did not register for this site, please ignore this email.</p>
-                        <p>© 2024 Anime Blogger Hyderabad, Telangana 505526</p> </footer>
+                        <p>© 2024 Anime Blogger Hyderabad, Telangana-India. 505526</p> </footer>
                         `
                       };
 
@@ -166,7 +166,7 @@ async function main(){
               <img src="https://img.freepik.com/free-photo/mythical-dragon-beast-anime-style_23-2151112842.jpg?t=st=1716664493~exp=1716668093~hmac=b34d930aea7f09a69bcb7e9915ea6038c25e075869ee3735cd762e878f1aa7f5&w=500" height="110"alt="App Logo" />
               <footer>
               <h5>‼ If this was you, you don’t need to do anything. If not, we’ll help you secure your account.</h5>
-              <p>© 2024 Anime Blogger Hyderabad, Telangana 505526</p> </footer>
+              <p>© 2024 Anime Blogger Hyderabad, Telangana-India. 505526</p> </footer>
             `
           };
         //
@@ -210,7 +210,7 @@ async function main(){
             html: `
               <h2>Congratulations on Your New Post! 🎆</h2>
               <h4>Hello ${LoggedUser},</h4>
-              <p>We are thrilled to see your new post on Anime Blogger.Your contributions are what make our community vibrant and engaging.</p>
+              <p>We are thrilled to see your new Blog "${name}" on Anime Blogger.Your contributions are what make our community vibrant and engaging.</p>
               <p>Here are a few things you can do to maximize the impact of your post:</p>
             <ul>
                 <li>📣 Share it on social media to reach a wider audience</li>
@@ -280,21 +280,44 @@ async function main(){
         let PName=req.body.name
         let imgURL=req.body.blogImage
         let PContent=req.body.content
+        const blogOwner = req.headers['header-2']
+        const blogTitle = req.headers['header-3']
+        //Sending Blog Modification Mail
+        const mailOptions = {
+            from: 'bsai42358@gmail.com',
+            to: blogOwner,
+            subject: 'Your Post Has Been Successfully Modified',
+            html: `
+              <h2>✏️ Your Post Has Been Successfully Modified ✏️</h2>
+              <p>Hello <strong>${blogOwner}</strong>,</p>
+              <p>We wanted to let you know that your post titled "<strong>${blogTitle}</strong>" on Anime Blogger has been successfully modified by you.</p>
+              <p>Please Visit the Website to view the changes.</p>
+              <p>Thank you for keeping your content up-to-date and engaging. Your efforts contribute significantly to the value and quality of our community.</p>
+              <p>If you have any questions or if you need further assistance with your post, feel free to reach out to us at any time.</p>
+              <p>Keep up the great work 👏</p>
+              <p>Best regards 🙌<br>Anime Blogger Team 💥</p>
+              <img src="https://img.freepik.com/free-photo/mythical-dragon-beast-anime-style_23-2151112842.jpg?t=st=1716664493~exp=1716668093~hmac=b34d930aea7f09a69bcb7e9915ea6038c25e075869ee3735cd762e878f1aa7f5&w=500" height="110"alt="App Logo" />
+              <footer>
+              <h5>‼ If you did not make these modifications, please contact us immediately.</h5>
+              <p>© 2024 Anime Blogger Hyderabad, Telangana-India. 505526</p> </footer>
+            `
+          };
+        //
         try{
             if((PName==="")&&(imgURL==="")){
                 Post.findOneAndUpdate({_id:Pid},{content:PContent}).then(r=>{
-                    res.json({message:"Blog Content Updated"})
+                    res.json({message:"Blog Content Updated Successfully"})
                 }).catch(err=>console(err))
 
             }else if((PName==="")&&(PContent===""))
                 {
                 Post.findOneAndUpdate({_id:Pid},{blogImage:imgURL}).then(re=>{
-                    res.json({message:"Blog Image Updated"})
+                    res.json({message:"Blog Image Updated Successfully"})
                 }).catch(err=>console(err))
 
             }else if((imgURL==="")&&(PContent==="")){
                 Post.findOneAndUpdate({_id:Pid},{name:PName}).then(re=>{
-                    res.json({message:"Blog Post Name Updated"})
+                    res.json({message:"Blog Post Title Updated Successfully"})
                 }).catch(err=>console(err))
             }
             else{
@@ -303,6 +326,14 @@ async function main(){
                     }
                 ).catch(err=>console(err))
             }
+    
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                return console.log(error);
+                }
+                console.log('Email sent: ' + info.response);
+                });
+
         }catch(err){
             console.error(err)
             res.status(500).json({message:"Server Error"})
@@ -312,9 +343,41 @@ async function main(){
 
     //Delete Route  -->Blog Posts
     app.delete("/api/delete-post/:id",async(req,res)=>{
+        const blogWriter = req.headers['header-4']
+        const postTitle = req.headers['header-5']
+
+        //Sending Post Deletion Mail
+        const mailOptions = {
+            from: 'bsai42358@gmail.com',
+            to: blogWriter,
+            subject: 'Your Post Has Been Deleted 🔴',
+            html: `
+              <h2>Post Deletion Notification ⚠</h2>
+              <p>Hello <strong>${blogWriter}</strong>,</p>
+              <p>We wanted to inform you that your post titled "<strong>${postTitle}</strong>" has been deleted from Anime Blogger.</p>
+              <p>This action was taken by:</p>
+              <ul>
+                <li>🛡️ <strong>Admin</strong>, if the post violated our community guidelines or for other reasons.</li>
+                <li>📝 <strong>You</strong>, if you chose to delete the post yourself.</li>
+              </ul>
+              <p>If you have any questions or concerns regarding this action, please feel free to contact us. We’re here to help and ensure a positive experience for all our users.</p>
+              <p>Thank you for your understanding.😊</p>
+              <p>Best regards 🙌<br>Anime Blogger Team 💥</p>
+              <img src="https://img.freepik.com/free-photo/mythical-dragon-beast-anime-style_23-2151112842.jpg?t=st=1716664493~exp=1716668093~hmac=b34d930aea7f09a69bcb7e9915ea6038c25e075869ee3735cd762e878f1aa7f5&w=500" height="110"alt="App Logo" />
+              <footer>
+              <h5>‼ If you did not perform this action or believe it was an error, please contact us immediately.</h5>
+              <p>© 2024 Anime Blogger Hyderabad, Telangana-India. 505526</p> </footer>
+            `
+          };
+        //
         try{
             await Post.findByIdAndDelete(req.params.id)
-            res.json({stat:true,message:"Blog Deleted Successfully"})
+            transporter.sendMail(mailOptions, (error) => {
+                if (error) {
+                return console.log(error);
+                }
+                res.json({stat:true,message:" Blog Deleted Successfully"})
+                });
         }catch(err){
             res.status(500).json({message:"Server Error"})
         }
