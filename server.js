@@ -77,13 +77,15 @@ async function main(){
                     <li>🌟 Exclusive content and updates</li>
                     <li>🗨️ Community discussions and comments</li>
                     </ul>
+                    <h4>Want To SignIn ?</h4>
+                    <a href="https://animeblogger.onrender.com/#/login">Click Here To SignIn </a>
                           <p>We hope you enjoy your time here and find the content enriching and enjoyable. If you have any questions or need assistance, feel free to reach out to us at any time.</p>
                         
                           <p>Thank You 🤩<br>Best regards 🙌<br>Anime Blogger Team 💥</p>
                           <img src="https://img.freepik.com/free-photo/mythical-dragon-beast-anime-style_23-2151112842.jpg?t=st=1716664493~exp=1716668093~hmac=b34d930aea7f09a69bcb7e9915ea6038c25e075869ee3735cd762e878f1aa7f5&w=500" height="110"alt="App Logo" />
                         <footer>
                         <p>If you did not register for this site, please ignore this email.</p>
-                        <p>© 2024 Anime Blogger Hyderabad, Telangana-India. 505526</p> </footer>
+                        <p>© 2024 Anime Blogger Hyderabad, Telangana-India, 505526.</p> </footer>
                         `
                       };
 
@@ -161,12 +163,13 @@ async function main(){
               <h4>Hello ${mailId}</h4>
               <p> Your Anime Blogger Account Password Changed SuccessFully ☑ <br>
               SignIn to Your Account With New Credentials </p>
+              <a href="https://animeblogger.onrender.com/#/login">Click Here To LogIn </a>
               <p>Hope You doing Well 🤩</p>
               <p>Thank You 😊<br>Best regards 🙌<br>Anime Blogger Team 💥</p>
               <img src="https://img.freepik.com/free-photo/mythical-dragon-beast-anime-style_23-2151112842.jpg?t=st=1716664493~exp=1716668093~hmac=b34d930aea7f09a69bcb7e9915ea6038c25e075869ee3735cd762e878f1aa7f5&w=500" height="110"alt="App Logo" />
               <footer>
               <h5>‼ If this was you, you don’t need to do anything. If not, we’ll help you secure your account.</h5>
-              <p>© 2024 Anime Blogger Hyderabad, Telangana-India. 505526</p> </footer>
+              <p>© 2024 Anime Blogger Hyderabad, Telangana-India, 505526.</p> </footer>
             `
           };
         //
@@ -210,7 +213,8 @@ async function main(){
             html: `
               <h2>Congratulations on Your New Post! 🎆</h2>
               <h4>Hello ${LoggedUser},</h4>
-              <p>We are thrilled to see your new Blog "${name}" on Anime Blogger.Your contributions are what make our community vibrant and engaging.</p>
+              <p>We are thrilled to see your new Blog "<strong>${name}</strong>" on Anime Blogger.Your contributions are what make our community vibrant and engaging.</p>
+              <a href="https://animeblogger.onrender.com/#/posts">Click Here To View Your Post </a>
               <p>Here are a few things you can do to maximize the impact of your post:</p>
             <ul>
                 <li>📣 Share it on social media to reach a wider audience</li>
@@ -225,7 +229,7 @@ async function main(){
             <img src="https://img.freepik.com/free-photo/mythical-dragon-beast-anime-style_23-2151112842.jpg?t=st=1716664493~exp=1716668093~hmac=b34d930aea7f09a69bcb7e9915ea6038c25e075869ee3735cd762e878f1aa7f5&w=500" height="110"alt="App Logo" />
             <footer>
             <p>If you did not write this post, please contact us immediately.</p>
-            <p>© 2024 Anime Blogger Hyderabad, Telangana 505526</p> </footer>
+            <p>© 2024 Anime Blogger Hyderabad, Telangana-India, 505526.</p> </footer>
             `
           };
 
@@ -292,6 +296,7 @@ async function main(){
               <p>Hello <strong>${blogOwner}</strong>,</p>
               <p>We wanted to let you know that your post titled "<strong>${blogTitle}</strong>" on Anime Blogger has been successfully modified by you.</p>
               <p>Please Visit the Website to view the changes.</p>
+              <a href="https://animeblogger.onrender.com/">AnimeBlogger Website </a>
               <p>Thank you for keeping your content up-to-date and engaging. Your efforts contribute significantly to the value and quality of our community.</p>
               <p>If you have any questions or if you need further assistance with your post, feel free to reach out to us at any time.</p>
               <p>Keep up the great work 👏</p>
@@ -299,7 +304,7 @@ async function main(){
               <img src="https://img.freepik.com/free-photo/mythical-dragon-beast-anime-style_23-2151112842.jpg?t=st=1716664493~exp=1716668093~hmac=b34d930aea7f09a69bcb7e9915ea6038c25e075869ee3735cd762e878f1aa7f5&w=500" height="110"alt="App Logo" />
               <footer>
               <h5>‼ If you did not make these modifications, please contact us immediately.</h5>
-              <p>© 2024 Anime Blogger Hyderabad, Telangana-India. 505526</p> </footer>
+              <p>© 2024 Anime Blogger Hyderabad, Telangana-India, 505526.</p> </footer>
             `
           };
         //
@@ -360,23 +365,23 @@ async function main(){
                 <li>🛡️ <strong>Admin</strong>, if the post violated our community guidelines or for other reasons.</li>
                 <li>📝 <strong>You</strong>, if you chose to delete the post yourself.</li>
               </ul>
+              <a href="https://animeblogger.onrender.com/">Click Here For Website </a>
               <p>If you have any questions or concerns regarding this action, please feel free to contact us. We’re here to help and ensure a positive experience for all our users.</p>
               <p>Thank you for your understanding.😊</p>
               <p>Best regards 🙌<br>Anime Blogger Team 💥</p>
               <img src="https://img.freepik.com/free-photo/mythical-dragon-beast-anime-style_23-2151112842.jpg?t=st=1716664493~exp=1716668093~hmac=b34d930aea7f09a69bcb7e9915ea6038c25e075869ee3735cd762e878f1aa7f5&w=500" height="110"alt="App Logo" />
               <footer>
               <h5>‼ If you did not perform this action or believe it was an error, please contact us immediately.</h5>
-              <p>© 2024 Anime Blogger Hyderabad, Telangana-India. 505526</p> </footer>
+              <p>© 2024 Anime Blogger Hyderabad, Telangana-India, 505526.</p> </footer>
             `
           };
         //
         try{
             await Post.findByIdAndDelete(req.params.id)
+            res.json({stat:true,message:" Blog Deleted Successfully"})
             transporter.sendMail(mailOptions, (error) => {
                 if (error) {
-                return console.log(error);
-                }
-                res.json({stat:true,message:" Blog Deleted Successfully"})
+                return console.log(error); }
                 });
         }catch(err){
             res.status(500).json({message:"Server Error"})
