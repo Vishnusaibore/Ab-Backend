@@ -31,7 +31,7 @@ async function main(){
     const User= mongoose.model("User",userSchema)
     //express App home route
     app.get("/",(req,res)=>{
-        res.send("h2>Hello Welcome To Anime Blogger</h2>")
+        res.send("<h2>Hello Welcome To Anime Blogger</h2>")
     })
 
     // Configure Nodemailer transporter
@@ -175,20 +175,25 @@ async function main(){
         //
         
         try{
-        User.findOneAndUpdate({email:mailId},{password:newHashedPassword}).then(isUpdated=>{
-            let mail=isUpdated.email
-            transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-            return console.log(error);
-            }
-            res.json({username:mail,stat:true,message:" Your Password Changed Successfully"})
-            });
-
-        }).catch(err=>console(err))
-    }catch(err){
-        console.log(err)
-        res.status(500).json({message:"Server Error"})
-    }
+        User.find({email:mailId}).then(result=>{
+        if(result.length===0){
+            res.json({username:"",stat:false,message:"Invalid User !!! Please Try Again"})
+        }else{
+            User.findOneAndUpdate({email:mailId},{password:newHashedPassword}).then(isUpdated=>{
+                let mail=isUpdated.email
+                transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                return console.log(error);
+                }
+                res.json({username:mail,stat:true,message:" Your Password Changed Successfully"})
+                });
+    
+            }).catch(err=>console(err)) 
+        }}).catch(err=>console(err))
+       }catch(err){
+            console.log(err)
+            res.status(500).json({message:"Server Error"})
+        }
     })
 
     //Define Schema  -->Blog Posts
@@ -378,7 +383,7 @@ async function main(){
         //
         try{
             await Post.findByIdAndDelete(req.params.id)
-            res.json({stat:true,message:" Blog Deleted Successfully"})
+            res.json({stat:true,message:"Blog Deleted Successfully!",blogName:postTitle})
             transporter.sendMail(mailOptions, (error) => {
                 if (error) {
                 return console.log(error); }
