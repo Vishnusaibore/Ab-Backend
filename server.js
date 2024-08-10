@@ -201,7 +201,8 @@ async function main(){
         name:String,
         blogImage:String,
         content:String,
-        owner:String
+        owner:String,
+        date:String
     })
     const Post = mongoose.model("Post",postSchema)
 
@@ -209,6 +210,7 @@ async function main(){
     app.post("/api/posts",async(req,res)=>{
         const{name,blogImage,content}=req.body
         const LoggedUser = req.headers['header-1']
+        const todayDate = req.headers['header-date']
 
         // Mail Options for Congratulations Message
         const mailOptions = {
@@ -241,7 +243,8 @@ async function main(){
         //
         const post=new Post({
             name,blogImage,content,
-            owner:LoggedUser
+            owner:LoggedUser,
+            date:todayDate
         })
         try{
             await post.save()
